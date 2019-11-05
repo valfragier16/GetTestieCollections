@@ -6,9 +6,14 @@ import static org.junit.Assert.*;
 import java.util.Stack;
 
 public class TestStack {
+    private Stack<String> stack;
 
     @org.junit.Before
     public void setUp() throws Exception {
+        stack = new Stack<>();
+        stack.push("Hello world");
+        stack.push("Valerie");
+        stack.push("Aspiring Software Developer"); // LIFO
     }
 
     @org.junit.After
@@ -26,31 +31,14 @@ public class TestStack {
 
     @Test
     public void TestStackPop() { // removes object from top of stack
-        Stack<String> stack = new Stack<>(); // new empty stack
-        stack.push("Hello world"); // add to stack
         stack.pop(); // remove string from stack
-        assertEquals(true, stack.isEmpty());
+        assertEquals(false, stack.isEmpty());
         // Throws EmptyStackException - if this stack is empty.
     }
 
-    @Test
-    public void TestStackPop2() {
-        Stack<String> stack = new Stack<>();
-        stack.push("Hello world");
-        stack.push("Valerie");
-        stack.push("Aspiring Software Developer");
-        stack.pop(); // remove string from stack
-        assertEquals(false, stack.isEmpty()); // true - stack not empty
-        System.out.print(stack); // Will display [Hello world, Valerie] the last element in the stack is removed thus the stack is not empty
-    }
 
     @Test
     public void TestStackPeek() { // Looks at the object on top without removing it
-        Stack<String> stack = new Stack<>();
-        stack.push("Hello world");
-        stack.push("Valerie");
-        stack.push("Aspiring Software Developer"); // LIFO
-        stack.peek();
         assertEquals("Aspiring Software Developer", stack.peek());
     }
 
@@ -62,10 +50,6 @@ public class TestStack {
 
     @Test
     public void TestStackSearch() { // returns the 1-based position from the top of the stack where the object is located.
-        Stack<String> stack = new Stack<>();
-        stack.push("Hello world");
-        stack.push("Valerie");
-        stack.push("Aspiring Software Developer");
         stack.push("1");
         stack.push("2");
         stack.push("3");

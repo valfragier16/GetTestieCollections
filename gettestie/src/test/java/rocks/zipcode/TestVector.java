@@ -7,11 +7,19 @@ import java.util.Spliterators;
 import java.util.Vector;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestVector {
+    private Vector v;
+    private Vector v_clone;
 
     @org.junit.Before
     public void setUp() throws Exception {
+        v = new Vector();
+        v_clone = new Vector();
+        v.add("Hello world");
+        v.add("Yuki");
+        v.add("Akita bear");
     }
 
     @org.junit.After
@@ -20,40 +28,18 @@ public class TestVector {
 
     @org.junit.Test
     public void TestVectorAdd() {
-        Vector v = new Vector();
-        v.add("Hello world");
-        v.add("Yuki");
-        v.add("Akita bear");
-        assertEquals(true, v.contains("Yuki"));
-    }
-    @Test
-    public void TestVectorAdd2() {
-        Vector v = new Vector();
-        v.add("Hello world");
-        v.add("Yuki");
-        v.add("Akita bear");
-        assertEquals(false, v.equals("Justin"));
+        v.add("Yami");
+        assertTrue(v.contains("Yami"));
     }
 
     @Test
     public void TestVectorVoid() {
-        Vector v = new Vector();
-        v.add("Hello world");
-        v.add("Yuki");
-        v.add("Akita bear");
         v.clear();
-        assertEquals(true, v.isEmpty());
+        assertTrue(v.isEmpty());
     }
 
     @Test
     public void TestVectorClone(){
-        Vector v = new Vector();
-        Vector v_clone = new Vector();
-        v.add(0, 1);
-        v.add(1, 2);
-        v.add(2, "geeks");
-        v.add(3, "forGeeks");
-        v.add(4, 3);
         v_clone = (Vector)v.clone();
         assertEquals(true, v.equals(v_clone)); // a clone of v versus v clone
     }
