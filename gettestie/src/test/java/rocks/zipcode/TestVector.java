@@ -33,7 +33,7 @@ public class TestVector {
     }
 
     @Test
-    public void TestVectorVoid() {
+    public void TestVectorClear() {
         v.clear();
         assertTrue(v.isEmpty());
     }
